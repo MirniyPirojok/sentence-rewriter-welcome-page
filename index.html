@@ -5,10 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sentence Rewriter Installed</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="confetti.js"></script>
 </head>
 <body>
-    <h1>Sentence Rewriter Installed</h1>
+    <h1>Sentence Rewriter Installed</h1>  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+    <script>
+      window.onload = function() {
+        var duration = 1 * 100;
+        var end = Date.now() + duration;
+  
+        (function frame() {
+          confetti({
+            particleCount: 7,
+            angle: 60,
+            spread: 100,
+            origin: { x: 0 }
+          });
+          confetti({
+            particleCount: 7,
+            angle: 120,
+            spread: 100,
+            origin: { x: 1 }
+          });
+  
+          if (Date.now() < end) {
+            requestAnimationFrame(frame);
+          }
+        }());
+      };
+    </script>
     <div class="image-container">
         <p class="instruction-text">Click the puzzle piece (1) in the top right of your browser. Then, click the little pin (2) next to the extension:</p>
         <img src="Sentence Rewriter Welcome Page - 1.png" alt="Sentence Rewriter Welcome Page - 1">
