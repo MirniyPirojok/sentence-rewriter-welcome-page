@@ -1,44 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"> <!-- default fallback -->
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sentence Rewriter Installed</title>
-    <link rel="stylesheet" href="styles.css">
-    <script defer src="https://cloud.umami.is/script.js" data-website-id="2b4d88da-d75f-48e9-b2c4-07dd91d9ad68"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-i18n="title">Sentence Rewriter Installed</title>
+  <link rel="stylesheet" href="styles.css" />
+  <!-- Analytics can remain as a third-party include -->
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="2b4d88da-d75f-48e9-b2c4-07dd91d9ad68"></script>
+  <!-- Your application code only -->
+  <script type="module" src="js/main.js"></script>
 </head>
 <body>
-    <h1>Sentence Rewriter Installed</h1>  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
-    <script>
-      window.onload = function() {
-        var duration = 1 * 100;
-        var end = Date.now() + duration;
-  
-        (function frame() {
-          confetti({
-            particleCount: 7,
-            angle: 60,
-            spread: 100,
-            origin: { x: 0 }
-          });
-          confetti({
-            particleCount: 7,
-            angle: 120,
-            spread: 100,
-            origin: { x: 1 }
-          });
-  
-          if (Date.now() < end) {
-            requestAnimationFrame(frame);
-          }
-        }());
-      };
-    </script>
-    <div class="image-container">
-        <p class="instruction-text">Click the puzzle piece (1) at the top right of your browser. Then click the pin (2) next to the extension:</p>
-        <img src="Sentence Rewriter Welcome Page - 1.png" alt="Sentence Rewriter Welcome Page - 1">
-        <p class="instruction-text">Open the extension (3) on any page to start using Sentence Rewriter:</p>
-        <img src="Sentence Rewriter Welcome Page - 2.png" alt="Sentence Rewriter Welcome Page - 2">
-    </div>
+  <h1 data-i18n="heading">Sentence Rewriter Installed</h1>
+
+  <div class="image-container">
+    <p class="instruction-text" data-i18n="step1">
+      Click the puzzle piece (1) at the top right of your browser. Then click the pin (2) next to the extension:
+    </p>
+    <img
+      src="Sentence Rewriter Welcome Page - 1.png"
+      alt="Sentence Rewriter Welcome Page - Step 1"
+      data-i18n-attr="alt:img1Alt"
+    />
+
+    <p class="instruction-text" data-i18n="step2">
+      Open the extension (3) on any page to start using Sentence Rewriter:
+    </p>
+    <img
+      src="Sentence Rewriter Welcome Page - 2.png"
+      alt="Sentence Rewriter Welcome Page - Step 2"
+      data-i18n-attr="alt:img2Alt"
+    />
+  </div>
 </body>
 </html>
