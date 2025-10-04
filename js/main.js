@@ -16,21 +16,27 @@ function detectLang() {
   }
   
   /** Load JSON translations with fallback to English on any failure. */
-  async function loadTranslations(lang) {
+// js/main.js
+
+/** Load JSON translations relative to this JS file. Works on GitHub Pages subpaths. */
+async function loadTranslations(lang) {
     const tryFetch = async (code) => {
-      const res = await fetch(`/i18n/${code}.json`, { cache: "no-store" });
-      if (!res.ok) throw new Error(`Failed ${code}`);
+      // main.js is in /js/, i18n is in /i18n/, so go one level up
+      const url = new URL(`../i18n/${code}.json`, import.meta.url).toString();
+      const res = await fetch(url, { cache: "no-store" });
+      if (!res.ok) throw new Error(`HTTP ${res.status} for ${url}`);
       return res.json();
     };
   
     try {
       return await tryFetch(lang);
-    } catch {
+    } catch (e) {
+      console.warn("i18n load failed for", lang, e);
       if (lang !== "en") {
         try {
           return await tryFetch("en");
-        } catch {
-          // As a last resort return minimal English dictionary
+        } catch (e2) {
+          console.error("Fallback i18n load failed", e2);
           return {
             title: "Sentence Rewriter Installed",
             heading: "Sentence Rewriter Installed",
@@ -43,7 +49,6 @@ function detectLang() {
           };
         }
       }
-      // lang was en and failed; return minimal
       return {
         title: "Sentence Rewriter Installed",
         heading: "Sentence Rewriter Installed",
@@ -56,6 +61,7 @@ function detectLang() {
       };
     }
   }
+  
   
   /** Apply translations to text nodes and attributes. */
   function applyI18n(dict, lang) {
